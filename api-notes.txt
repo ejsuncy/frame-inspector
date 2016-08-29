@@ -1,0 +1,23 @@
+browserAction: use Browser actions to put icons in the main google chrome toolbar, to the right of the address bar. in addition to its icon, a browser action can also have a tooltip, a badge, and a popup.
+
+pageAction: Use the chrome.pageAction API to put icons in the main Google Chrome toolbar, to the right of the address bar. Page actions represent actions that can be taken on the current page, but that aren't applicable to all pages. Page actions appear grayed out when inactive. 
+
+commands: Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the browser action or send a command to the extension.
+
+contextMenus: Use the chrome.contextMenus API to add items to Google Chrome's context menu. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.
+
+debugger: Use chrome.debugger to attach to one or more tabs to instrument network interaction, debug JavaScript, mutate the DOM and CSS, etc. Use the Debuggee tabId to target tabs with sendCommand and route events by tabId from onEvent callbacks.
+
+devtools.inspectedWindow: Use the chrome.devtools.inspectedWindow API to interact with the inspected window: obtain the tab ID for the inspected page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within the page.
+
+devtools.network: Use the chrome.devtools.network API to retrieve the information about network requests displayed by the Developer Tools in the Network panel.
+
+devtools.panels: Use the chrome.devtools.panels API to integrate your extension into Developer Tools window UI: create your own panels, access existing panels, and add sidebars.
+
+events: The chrome.events namespace contains common types used by APIs dispatching events to notify you when something interesting happens.
+
+networking.config: Use the networking.config API to authenticate to captive portals.
+
+webRequest: Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
+
+

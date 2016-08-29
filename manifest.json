@@ -1,0 +1,19 @@
+{
+	"manifest_version" : 2,
+	"name" : "Frame Inspector",
+	"version" : "0.1",
+
+	"description" : "An extension for transforming the content of websocket frames.",
+	"icons" : {
+		"16" : "",
+		"48" : "",
+		"128" : ""
+	},
+
+	"browser_action" : {
+		"default_icon" : {
+			
+		}
+	}
+
+}
