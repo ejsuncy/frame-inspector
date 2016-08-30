@@ -21,3 +21,23 @@ networking.config: Use the networking.config API to authenticate to captive port
 webRequest: Use the chrome.webRequest API to observe and analyze traffic and to intercept, block, or modify requests in-flight.
 
 
+
+Architecture notes:
+The "background page" is an invisible page that holds the main logic of the extension (can be just a .js file).
+
+We need an options page to:
+    (1) enable/disable the extension
+    (2) set/reset the regular expression
+We need to use local storage to store extension settings, since event pages aren't loaded for very long and global variables are unreliable for runtime state.
+We should use an Event page as opposed to a background page, since our extension only needs to be loaded when it is being used to inspect websocket frames.
+
+Have a dumb event page that just handles the extension settings and state (interacts with storage API).
+Define functions in devtools page, use devtools page ask the event page via Message Passing for the settings (enabled/disabled, regex to use, etc). Then intercept network websocket
+requests, and with each frame, grab the text, use devtools page functions to format the text, execute regex replacement, and add the formatted text as a new row to a table in the panel view.
+Additionally, when selecting a row on the panel view, json-pretty print the text in a resizable pane to the right of the table.
+
+
+Events:
+runtime.onInstalled is a good place to register for declarativeWebRequest rules, contextMenu entries, and other one-time initialization stuff
+Use event filters to restrict the loading of our event page to the cases that we care about.
+Be sure to add event listeners at page load time.
