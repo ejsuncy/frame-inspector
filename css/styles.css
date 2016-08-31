@@ -1,0 +1,23 @@
+#frames {
+    border-color: red;
+    border-width: 1px;
+    border-style: solid;
+    width: 64%;
+    height: 80%;
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    margin-left: 5px;
+}
+
+#preview {
+    border-color: blue;
+    border-width: 1px;
+    border-style: solid;
+    width: 34%;
+    height: 80%;
+    overflow: scroll;
+    position: fixed;
+    right: 0;
+    margin-right: 5px;
+}
