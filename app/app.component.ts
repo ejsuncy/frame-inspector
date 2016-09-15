@@ -1,51 +1,34 @@
 import {Component} from '@angular/core';
 declare let chrome; //our extension will have access to this in the chrome browser
 
+/*
+    The purpose of this app is to create a dev tools panel in chrome.
+ */
+
 @Component({
     selector: 'frame-inspector',
-    templateUrl: '../html/devtoolsPanel.component.html'
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     // devtools panel creation parameters
     private panelTitle : string = "FrameInspector";
     private panelPNGPath: string = "";
-    private panelHTMLPath: string = "/html/devtoolsPanel.component.html";
-
-    // devtools panel vars
-    private framesDiv: Element;
+    private panelHTMLPath: string = "/app_devtools_panel/index.html";
 
     constructor() {
         chrome.devtools.panels.create(this.panelTitle,
             this.panelPNGPath,
             this.panelHTMLPath,
             function (panel) {
-                panel.onShown.addListener(this.devtoolPanelOnShownListener);
+                // panel.onShown.addListener(this.devtoolPanelOnShownListener);
             }
         );
     }
 
-    // entry point once our panel has been loaded
-    private devtoolPanelOnShownListener (extPanelWindow) {
-        // var regex = localStorage.getItem('regex');
-        extPanelWindow.setTimeout(function () {
-            this.appendRow(extPanelWindow, 0);
-        }, 1000);
-    }
-
     private appendRow (extPanelWindow, text){
-        var contentNode = extPanelWindow.document.getElementById('frames');
-        var node = extPanelWindow.document.createElement("div");
-        node.appendChild(document.createTextNode(text));
 
-        var atBottom = contentNode.scrollHeight - contentNode.scrollTop === contentNode.clientHeight;
+        // var atBottom = contentNode.scrollHeight - contentNode.scrollTop === contentNode.clientHeight;
 
-        contentNode.appendChild(node);
-        if (atBottom)
-            node.scrollIntoView();
-
-        extPanelWindow.setTimeout(function(){
-            this.appendRow(extPanelWindow, text + 1);
-        }, 500);
     }
 
 }

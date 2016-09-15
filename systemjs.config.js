@@ -9,6 +9,7 @@
             // our app is within the app folder
             app: 'app',
             app_popup: 'app_popup',
+            app_devtools_panel: 'app_devtools_panel',
             // angular bundles
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -38,6 +39,10 @@
                 defaultExtension: 'js'
             },
             app_popup: {
+                main: './main.js',
+                defaultExtension: 'js'
+            },
+            app_devtools_panel: {
                 main: './main.js',
                 defaultExtension: 'js'
             },
