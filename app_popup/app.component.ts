@@ -5,41 +5,47 @@ import {Component} from '@angular/core';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    private regex: string = '^\\[\"|^a\\[\"|\"\\]$';
-    private input_field: Element;
-    private regex_field: Element;
+    private inputText: string;
+    private regex: string;
+    private outputText: string;
 
     constructor(){
         this.initFields();
     }
 
-    private renderResult(text) {
-        document.getElementById("result").innerText = text;
-    }
+    private static replace(input, regex) {
+        if (!input || !regex) return null;
 
-    private replace(input, regex) {
         var regexp = new RegExp(regex, 'g');
         return input.replace(regexp, "");
     }
 
     private saveInput() {
-        localStorage.setItem('input_text', this.input_field.nodeValue);
+        localStorage.setItem('input_text', this.inputText);
+        this.setOutputText();
     }
 
+
     private saveRegex() {
-        localStorage.setItem('regex', this.regex_field.nodeValue);
+        localStorage.setItem('regex', this.regex);
+        this.setOutputText();
+    }
+
+    private setOutputText(){
+        var newText = AppComponent.replace(this.inputText, this.regex);
+
+        if (newText) {
+            this.outputText = newText;
+        }
     }
 
     private initFields() {
-        this.input_field = document.getElementById('input_text');
-        this.regex_field = document.getElementById('regex');
+        //todo: remove this
+        localStorage.setItem('regex', '^\\[\"|^a\\[\"|\"\\]$');
 
         if (localStorage.getItem('input_text'))
-            this.input_field.nodeValue = localStorage.getItem('input_text');
+            this.inputText = localStorage.getItem('input_text');
         if (localStorage.getItem('regex'))
-            this.regex_field.nodeValue = localStorage.getItem('regex');
-
-        this.input_field.addEventListener('blur', this.saveInput);
-        this.regex_field.addEventListener('blur', this.saveRegex);
+            this.regex = localStorage.getItem('regex');
     }
 }
