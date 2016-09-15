@@ -7,10 +7,10 @@
 
 	"browser_action" : {
 		"default_title" : "Frame Inspector",
-		"default_popup" : "src/html/popup.html"
+		"default_popup" : "app_popup/index.html"
 	},
 
 	"author" : "Dan Bunker",
 
-	"devtools_page" : "src/index.html"
+	"devtools_page" : "index.html"
 }

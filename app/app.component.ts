@@ -3,13 +3,13 @@ declare let chrome; //our extension will have access to this in the chrome brows
 
 @Component({
     selector: 'frame-inspector',
-    templateUrl: 'html/devtools_panel.html'
+    templateUrl: '../html/devtoolsPanel.component.html'
 })
 export class AppComponent {
     // devtools panel creation parameters
     private panelTitle : string = "FrameInspector";
     private panelPNGPath: string = "";
-    private panelHTMLPath: string = "/html/devtools_panel.html";
+    private panelHTMLPath: string = "/html/devtoolsPanel.component.html";
 
     // devtools panel vars
     private framesDiv: Element;

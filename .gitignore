@@ -1,6 +1,6 @@
 .idea
-src/node_modules
-src/typings
+node_modules
+**/typings
 npm-debug.log
 **/**/*.component.js
 **/**/*.component.js.map
